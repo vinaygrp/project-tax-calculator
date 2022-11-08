@@ -1,16 +1,26 @@
-// export const FEDRAL_TAX = {//   FIRST: { percentage: 15, minAmount: 0, maxAmount: 50197 },//   SECOND: { percentage: 20.5, minAmount: 50197, maxAmount: 100392 },//   THIRD: { percentage: 26, minAmount: 100392, maxAmount: 155625 },
-//   FOURTH: { percentage: 29, minAmount: 155625, maxAmount: 221708 },
-//   LAST: { percentage: 33, minAmount: 221708, maxAmount: -1 },
-// };
+export const PROV_ONTARIO = 'Ontario';
+export const PROV_NEWFOUNDLAND_AND_LABRADOR = 'Newfoundland and Labrador';
+export const PROV_PRINCE_EDDWARD_ISLAND = 'Prince Edward Island';
+export const PROV_NOVA_SCOTIA = 'Nova Scotia';
+export const PROV_NEW_BRUNSWICK = 'New Brunswick';
+export const PROV_QUEBEC = 'Quebec';
+export const PROV_MAINTOBA = 'Manitoba';
 
-export const ONTARIO = {
-  // 5.05% on the portion of your taxable income that is $46,226 or less, plus
-  // 9.15% on the portion of your taxable income that is more than $46,226 but not more than $92,454, plus
-  // 11.16% on the portion of your taxable income that is more than $92,454 but not more than $150,000, plus
-  // 12.16% on the portion of your taxable income that is more than $150,000 but not more than $220,000, plus
-  // 13.16% on the portion of your taxable income that is more than $220,000
-};
+export const FEDRAL_TAX = [
+  { lower: 0, upper: 50197, taxRate: 15 },
+  { lower: 50197, upper: 100392, taxRate: 20.5 },
+  { lower: 100392, upper: 155625, taxRate: 26 },
+  { lower: 155625, upper: 221708, taxRate: 29 },
+  { lower: 221708, upper: undefined, taxRate: 33 },
+];
 
+export const ONTARIO = [
+  { lower: 0, upper: 46226, taxRate: 5.05 },
+  { lower: 46226, upper: 92454, taxRate: 9.15 },
+  { lower: 92454, upper: 150000, taxRate: 11.16 },
+  { lower: 150000, upper: 220000, taxRate: 12.16 },
+  { lower: 220000, upper: undefined, taxRate: 13.16 },
+];
 /* 
 Provincial and territorial tax rates (combined chart)
 Provinces and territories 	Rates
