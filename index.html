@@ -9,27 +9,41 @@
   </head>
   <body>
     <main>
-      <section class="player player--0 player--active">
-        <h2 class="name" id="name--0">Player 1</h2>
-        <p class="score" id="score--0">43</p>
-        <div class="current">
-          <p class="current-label">Current</p>
-          <p class="current-score" id="current--0">0</p>
-        </div>
-      </section>
-      <section class="player player--1">
-        <h2 class="name" id="name--1">Player 2</h2>
-        <p class="score" id="score--1">24</p>
-        <div class="current">
-          <p class="current-label">Current</p>
-          <p class="current-score" id="current--1">0</p>
-        </div>
-      </section>
+      <!-- OPERATION: LOAN -->
+      <div class="operation operation--gross-income">
+        <h2>Gross Salary</h2>
+        <form class="form form--gross-income">
+          <input
+            type="number"
+            class="form__input form__input--gross-income"
+            placeholder="Enter your gross income"
+          />
+          <button class="form__btn form__btn--gross-income">&rarr;</button>
+          <!-- <label class="form__label form__label--gross-income">Amount</label> -->
+        </form>
+      </div>
 
-      <img src="dice-5.png" alt="Playing dice" class="dice" />
-      <button class="btn btn--new">🔄 New game</button>
-      <button class="btn btn--roll">🎲 Roll dice</button>
-      <button class="btn btn--hold">📥 Hold</button>
+      <div class="operation result">
+        <!-- <h2>Results</h2> -->
+
+        <h2>Fedal tax rate for 2022</h2>
+        <ul>
+          <li>15% on the first $50,197 of taxable income, plus</li>
+          <li>
+            20.5% on the next $50,195 of taxable income (on the portion of
+            taxable income over 50,197 up to $100,392), plus
+          </li>
+          <li>
+            26% on the next $55,233 of taxable income (on the portion of taxable
+            income over $100,392 up to $155,625), plus
+          </li>
+          <li>
+            29% on the next $66,083 of taxable income (on the portion of taxable
+            income over 155,625 up to $221,708), plus
+          </li>
+          <li>33% of taxable income over $221,708</li>
+        </ul>
+      </div>
     </main>
     <script src="script.js"></script>
   </body>

@@ -25,17 +25,100 @@ body {
 /* LAYOUT */
 main {
   position: relative;
-  width: 100rem;
-  height: 60rem;
+  width: 150rem;
+  height: 80rem;
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
   filter: blur();
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   overflow: hidden;
-  display: flex;
+  /* display: flex; */
 }
 
+ul {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+/* OPERATIONS */
+.operation {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #333;
+}
+
+.operation--gross-income {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+
+.result {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #333;
+  /* font-size: 1.3rem; */
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 1rem;
+}
+
+/* Exceptions for interst */
+.form.form--gross-income {
+  grid-template-columns: 2.5fr 1fr 2.5fr;
+}
+.form__label--gross-income {
+  grid-row: 2;
+}
+/* End exceptions */
+
+.form__input {
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.form__label {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.form__btn {
+  border: none;
+  border-radius: 0.2rem;
+  font-size: 1.8rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form__btn:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+/* 
 .player {
   flex: 50%;
   padding: 9rem;
@@ -43,10 +126,10 @@ main {
   flex-direction: column;
   align-items: center;
   transition: all 0.75s;
-}
+} */
 
 /* ELEMENTS */
-.name {
+/* .name {
   position: relative;
   font-size: 4rem;
   text-transform: uppercase;
@@ -97,10 +180,10 @@ main {
 
 .current-score {
   font-size: 3.5rem;
-}
+} */
 
 /* ABSOLUTE POSITIONED ELEMENTS */
-.btn {
+/* .btn {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -164,7 +247,7 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
-}
+} */
 
 .hidden {
   display: none;
