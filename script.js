@@ -1,126 +1,5 @@
 'use strict';
 
-const FEDRAL_TAX = {
-  FIRST: {
-    taxRate: 15,
-    minAmount: 0,
-    maxAmount: 50197,
-  },
-  SECOND: {
-    taxRate: 20.5,
-    minAmount: 50197,
-    maxAmount: 100392,
-  },
-  THIRD: {
-    taxRate: 26,
-    minAmount: 100392,
-    maxAmount: 155625,
-    setTaxOnAmount: this.maxAmount * this.taxRate,
-  },
-  FOURTH: {
-    taxRate: 29,
-    minAmount: 155625,
-    maxAmount: 221708,
-    setTaxOnAmount: this.maxAmount * this.taxRate,
-  },
-  FIFTH: {
-    taxRate: 33,
-    minAmount: 221708,
-    maxAmount: -1,
-    setTaxOnAmount: this.maxAmount * this.taxRate,
-  },
-};
-
-/*
-If your taxable income is $50,197 or less, use the following chart:
---------------------
-Enter your taxable income from line 26000 of your return.   ____________________ Line 67
-Base amount                                                 ____________− 0.00__ Line 68
-Line 67 minus line 68 (cannot be negative)                  =___________________ Line 69
-Federal tax rate                                            × 15%_______________ Line 70
-Line 69 multiplied by the percentage from line 70           = __________________ Line 71
-Tax on the amount from line 71                              + 0.00______________ Line 72
-Line 71 plus line 72                                        =___________________ Line 73
---------------------
-
-
-// const firstBracket = function (baseAmount) {
-//   const taxOnAmount = calculateTaxOnAmount(FEDRAL_TAX.FIRST, baseAmount);
-//   let fedralTaxValue =
-//     baseAmount * (FEDRAL_TAX.FIRST.taxRate / 100) + taxOnAmount;
-//   return fedralTaxValue;
-// };
-
-
-  If your taxable income is more than $50,197 but not more than $100,392, use the following chart:
-  --------------------
-  Enter your taxable income from line 26000 of your return.   ____________________ Line 67
-  Base amount                                                 _______− 50,197.00__ Line 68
-  Line 67 minus line 68 (cannot be negative)                  =___________________ Line 69
-  Federal tax rate                                            × 20.5%_____________ Line 70
-  Line 69 multiplied by the percentage from line 70           = __________________ Line 71
-  Tax on the amount from line 71                              + 7,529.55__________ Line 72
-  Line 71 plus line 72                                        =___________________ Line 73
-  --------------------
-
-
-// const secondBracket = function (baseAmount) {
-//   const taxOnAmount = calculateTaxOnAmount(FEDRAL_TAX.FIRST, baseAmount);
-//   let fedralTaxValue =
-//     baseAmount * (FEDRAL_TAX.SECOND.taxRate / 100) + taxOnAmount;
-//   return fedralTaxValue;
-// };
-
-
-  If your taxable income is more than $100,392 but not more than $155,625, use the following chart:
-  --------------------
-  Enter your taxable income from line 26000 of your return.   ____________________ Line 67
-  Base amount                                                 _____ − 100,392.00__ Line 68
-  Line 67 minus line 68 (cannot be negative)                  =___________________ Line 69
-  Federal tax rate                                            × 26%_______________ Line 70
-  Line 69 multiplied by the percentage from line 70           = __________________ Line 71
-  Tax on the amount from line 71                              + 17,819.53 ________ Line 72
-  Line 71 plus line 72                                        =___________________ Line 73
-  --------------------
-
-
-const thirdBracket = function (baseAmount) {
-  return 0;
-};
-
- 
-  If your taxable income is more than $155,625 but not more than $221,708, use the following chart:
-  --------------------
-  Enter your taxable income from line 26000 of your return.   ____________________ Line 67
-  Base amount                                                 _____ − 155,625.00__ Line 68
-  Line 67 minus line 68 (cannot be negative)                  =___________________ Line 69
-  Federal tax rate                                            × 29%_______________ Line 70
-  Line 69 multiplied by the percentage from line 70           = __________________ Line 71
-  Tax on the amount from line 71                              + 32,180.11_________ Line 72
-  Line 71 plus line 72                                        =___________________ Line 73
-  --------------------
-
-const fourthBracket = function (baseAmount) {
-  return 0;
-};
-
-
-  If your taxable income is more than $221,708, use the following chart:
-  --------------------
-  Enter your taxable income from line 26000 of your return.   ____________________ Line 67
-  Base amount                                                 _____ − 221,708.00__ Line 68
-  Line 67 minus line 68 (cannot be negative)                  =___________________ Line 69
-  Federal tax rate                                            × 33%_______________ Line 70
-  Line 69 multiplied by the percentage from line 70           = __________________ Line 71
-  Tax on the amount from line 71                              + 51,344.18_________ Line 72
-  Line 71 plus line 72                                        =___________________ Line 73
-  --------------------
-
-
-const fifthBracket = function (baseAmount) {
-  return 0;
-};
-*/
 /* 
 15% on the first $50,197 of taxable income, plus
 20.5% on the next $50,195 of taxable income (on the portion of taxable income over 50,197 up to $100,392), plus
@@ -130,112 +9,110 @@ const fifthBracket = function (baseAmount) {
 --------------------
 */
 
+const FEDRAL_TAX_NEW = [
+  { lower: 0, upper: 50197, taxRate: 15 },
+  { lower: 50197, upper: 100392, taxRate: 20.5 },
+  { lower: 100392, upper: 155625, taxRate: 26 },
+  { lower: 155625, upper: 221708, taxRate: 29 },
+  { lower: 221708, upper: undefined, taxRate: 33 },
+];
+
+/* 
+  5.05% on the portion of your taxable income that is $46,226 or less, plus
+  9.15% on the portion of your taxable income that is more than $46,226 but not more than $92,454, plus
+  11.16% on the portion of your taxable income that is more than $92,454 but not more than $150,000, plus
+  12.16% on the portion of your taxable income that is more than $150,000 but not more than $220,000, plus
+  13.16% on the portion of your taxable income that is more than $220,000
+*/
+
+const ONTARIO = [
+  { lower: 0, upper: 46226, taxRate: 5.05 },
+  { lower: 46226, upper: 92454, taxRate: 9.15 },
+  { lower: 92454, upper: 150000, taxRate: 11.16 },
+  { lower: 150000, upper: 220000, taxRate: 12.16 },
+  { lower: 220000, upper: undefined, taxRate: 13.16 },
+];
 // const GROSS_SALARY = 50197; // First bracket
-// const GROSS_SALARY = 98850; // second bracket
+const GROSS_SALARY = 98850; // second bracket
 // const GROSS_SALARY = 120000; // second + third bracket
 // const GROSS_SALARY = 180000; // second + third + fourth bracket
-const GROSS_SALARY = 221709; // second + third + fourth + fifth bracket
+// const GROSS_SALARY = 221709; // second + third + fourth + fifth bracket
 
-// const calcFedralTaxOnTheAmount = function (
-//   baseAmount,
-//   currObjValue,
-//   prevObjValue
-// ) {
-//   if (currObjValue === prevObjValue) return 0;
-
-//   return prevObjValue.maxAmount * (prevObjValue.taxRate / 100);
-// };
-
-// const calculateFedralTaxValue = function (
-//   baseAmount,
-//   currObjValue,
-//   prevObjValue = FEDRAL_TAX.FIRST
-// ) {
-//   const taxOnTheAmount = calcFedralTaxOnTheAmount(
-//     GROSS_SALARY,
-//     currObjValue,
-//     prevObjValue
-//   );
-//   console.log(`Tax On the Amount: ${taxOnTheAmount}`);
-//   const fedralTaxValue =
-//     baseAmount * (currObjValue.taxRate / 100) + taxOnTheAmount;
-//   return fedralTaxValue;
-// };
-
-const options = {
-  style: 'currency',
-  unit: 'celsius',
-  currency: 'CAD',
+const formatNumberInternational = function (num) {
+  const options = {
+    style: 'currency',
+    unit: 'celsius',
+    currency: 'CAD',
+  };
+  return new Intl.NumberFormat('en-CA', options).format(num);
 };
-
-console.log(
-  'CAD:',
-  new Intl.NumberFormat('en-CA', options).format(GROSS_SALARY)
-);
 
 // What is my take home income
 const takeHomeIncome = function () {
-  let taxableIncome = GROSS_SALARY;
+  let fedTaxableIncome,
+    provTaxableIncome = GROSS_SALARY;
   const fedralTaxToPay = [];
+  const provincialTaxToPay = [];
+  const fedTaxRateUsed = [];
+  const provTaxRateUsed = [];
 
-  // FIRST BRACKET
-  if (GROSS_SALARY > FEDRAL_TAX.FIRST.minAmount) {
-    taxableIncome =
-      GROSS_SALARY > FEDRAL_TAX.FIRST.maxAmount
-        ? FEDRAL_TAX.FIRST.maxAmount - FEDRAL_TAX.FIRST.minAmount
-        : GROSS_SALARY - FEDRAL_TAX.FIRST.minAmount;
-    console.log('FIRST Bracket taxable income:', taxableIncome);
-    fedralTaxToPay.push(taxableIncome * (FEDRAL_TAX.FIRST.taxRate / 100));
-  }
-
-  // SECOND BRACKET
-  if (GROSS_SALARY > FEDRAL_TAX.SECOND.minAmount) {
-    taxableIncome =
-      GROSS_SALARY > FEDRAL_TAX.SECOND.maxAmount
-        ? FEDRAL_TAX.SECOND.maxAmount - FEDRAL_TAX.SECOND.minAmount
-        : GROSS_SALARY - FEDRAL_TAX.SECOND.minAmount;
-
-    console.log('SECOND Bracket taxable income:', taxableIncome);
-    fedralTaxToPay.push(taxableIncome * (FEDRAL_TAX.SECOND.taxRate / 100));
-  }
-
-  // THIRD BRACKET
-  if (GROSS_SALARY > FEDRAL_TAX.THIRD.minAmount) {
-    taxableIncome =
-      GROSS_SALARY > FEDRAL_TAX.THIRD.maxAmount
-        ? FEDRAL_TAX.THIRD.maxAmount - FEDRAL_TAX.THIRD.minAmount
-        : GROSS_SALARY - FEDRAL_TAX.THIRD.minAmount;
-
-    console.log('THIRD Bracket taxable income:', taxableIncome);
-    fedralTaxToPay.push(taxableIncome * (FEDRAL_TAX.THIRD.taxRate / 100));
-  }
-
-  if (GROSS_SALARY > FEDRAL_TAX.FOURTH.minAmount) {
-    taxableIncome =
-      GROSS_SALARY > FEDRAL_TAX.FOURTH.maxAmount
-        ? FEDRAL_TAX.FOURTH.maxAmount - FEDRAL_TAX.FOURTH.minAmount
-        : GROSS_SALARY - FEDRAL_TAX.FOURTH.minAmount;
-
-    console.log('FOURTH Bracket taxable income:', taxableIncome);
-    fedralTaxToPay.push(taxableIncome * (FEDRAL_TAX.FOURTH.taxRate / 100));
-  }
-
-  if (GROSS_SALARY > FEDRAL_TAX.FIFTH.minAmount) {
-    taxableIncome = GROSS_SALARY - FEDRAL_TAX.FIFTH.minAmount;
-
-    console.log('FIFTH Bracket taxable income:', taxableIncome);
-    fedralTaxToPay.push(taxableIncome * (FEDRAL_TAX.FIFTH.taxRate / 100));
-  }
-
-  // Show the amount.
-  console.log('TAXes: ', fedralTaxToPay);
-
-  let taxSum = fedralTaxToPay.reduce((acc, amt) => acc + amt);
-  const takeHome = new Intl.NumberFormat('en-CA', options).format(
-    GROSS_SALARY - taxSum
+  //  ======= FEDRAL TAX =======
+  const fedLimits = FEDRAL_TAX_NEW.filter(
+    (limit) => GROSS_SALARY > limit.lower
   );
-  taxSum = new Intl.NumberFormat('en-CA', options).format(taxSum);
-  console.log(`Tax to pay: ${taxSum}, Take home amount: ${takeHome}`);
+  console.log('fedLimits:', fedLimits);
+  fedLimits.forEach((fed) => {
+    fedTaxableIncome =
+      GROSS_SALARY > fed.upper
+        ? fed.upper - fed.lower
+        : GROSS_SALARY - fed.lower;
+    fedralTaxToPay.push(fedTaxableIncome * (fed.taxRate / 100));
+    fedTaxRateUsed.push(fed.taxRate);
+  });
+  console.log(
+    'fedralTaxToPay:',
+    fedralTaxToPay,
+    fedralTaxToPay.reduce((acc, tax) => acc + tax)
+  );
+
+  // ======= PROVINCIAL TAX.  =======
+  const provLimits = ONTARIO.filter((limit) => GROSS_SALARY > limit.lower);
+  console.log('provLimits:', provLimits);
+
+  provLimits.forEach((prov) => {
+    provTaxableIncome =
+      GROSS_SALARY > prov.upper
+        ? prov.upper - prov.lower
+        : GROSS_SALARY - prov.lower;
+    provincialTaxToPay.push(provTaxableIncome * (prov.taxRate / 100));
+    provTaxRateUsed.push(prov.taxRate);
+  });
+  console.log(
+    'provincialTaxToPay:',
+    provincialTaxToPay,
+    provincialTaxToPay.reduce((acc, tax) => acc + tax)
+  );
+  console.log('Fedral Tax Rate Used:', fedTaxRateUsed);
+  console.log('Provicinal Tax Rate Used:', provTaxRateUsed);
+
+  // ======= PRINT OUT =======
+  const taxSum =
+    provincialTaxToPay.reduce((acc, tax) => acc + tax) +
+    fedralTaxToPay.reduce((acc, tax) => acc + tax);
+  const takeHome = GROSS_SALARY - taxSum;
+  const avgTaxRate = (taxSum / GROSS_SALARY) * 100;
+  const marginalTax =
+    Math.max(...fedTaxRateUsed) + Math.max(...provTaxRateUsed);
+
+  console.log(
+    `Tax to pay: ${formatNumberInternational(
+      taxSum
+    )},\nTake home amount: ${formatNumberInternational(
+      takeHome
+    )},\nAverage Tax Rate: ${avgTaxRate.toFixed(
+      2
+    )}%,\nMarginal Tax Rate: ${marginalTax}%`
+  );
 };
 
 takeHomeIncome();
