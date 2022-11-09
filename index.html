@@ -11,68 +11,203 @@
   <body>
     <main>
       <!-- OPERATION: LOAN -->
-      <div class="operation operation--gross-income">
+      <div>
         <h2>Gross Salary</h2>
-        <form class="form form--gross-income">
+        <form class="form">
           <input
             type="number"
-            class="form__input form__input--gross-income"
+            class="form__input--gross-income"
             placeholder="Enter your gross annual income"
           />
-          <button class="form__btn form__btn--gross-income">&rarr;</button>
+          <button type="button" class="form__btn--gross-income">&rarr;</button>
           <!-- <label class="form__label form__label--gross-income">Amount</label> -->
         </form>
       </div>
+      <div>
+        <!-- RESULTS -->
+        <br />
+        <div>
+          <h1>Annual Gross Salary <span>$98,850.00</span></h1>
+          <h2>Results</h2>
+          <table class="content-table">
+            <thead>
+              <tr class="to-upper">
+                <th>Fedral Tax</th>
+                <th>Provincial Tax</th>
+                <th>Tax to Pay</th>
+                <th>Take Home Amount</th>
+                <th>Average Tax Rate</th>
+                <th>Marginal Tax Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$17,503.42</td>
+                <td>$7,278.07</td>
+                <td>$24,781.48</td>
+                <td>$74,068.52</td>
+                <td>25.07%</td>
+                <td>31.66%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <div class="operation result">
-        <!-- <h2>Results</h2> -->
-        <section class="Fedral">
-          <h2>Fedal tax rate for 2022</h2>
-          <ul>
-            <li>15% on the first $50,197 of taxable income, plus</li>
-            <li>
-              20.5% on the next $50,195 of taxable income (on the portion of
-              taxable income over 50,197 up to $100,392), plus
-            </li>
-            <li>
-              26% on the next $55,233 of taxable income (on the portion of
-              taxable income over $100,392 up to $155,625), plus
-            </li>
-            <li>
-              29% on the next $66,083 of taxable income (on the portion of
-              taxable income over 155,625 up to $221,708), plus
-            </li>
-            <li>33% of taxable income over $221,708</li>
-          </ul>
-        </section>
+        <!-- Result breakdown -->
+        <h1>Result Breakdown</h1>
+        <!-- FEBDRAL TAX CALCULATION -->
+        <div>
+          <h2>Fedral Tax Calculation Breakdown</h2>
+          <table class="content-table">
+            <thead>
+              <tr class="to-upper">
+                <th>Tax Rate</th>
+                <th>Lower Limit</th>
+                <th>Upper Limit</th>
+                <th>Taxable Income</th>
+                <th>Tax to Pay</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>15%</td>
+                <td>0</td>
+                <td>$50,197.00</td>
+                <td>$50,197.00</td>
+                <td>$7,529.55</td>
+              </tr>
+              <tr>
+                <td>20.50%</td>
+                <td>$50,197.00</td>
+                <td>$100,392.00</td>
+                <td>$50,195.00</td>
+                <td>$10,289.98</td>
+              </tr>
+              <tr>
+                <td>26.00%</td>
+                <td>$100,392.00</td>
+                <td>$155,625.00</td>
+                <td>$55,233.00</td>
+                <td>$14,360.58</td>
+              </tr>
+              <tr>
+                <td>29.00%</td>
+                <td>$155,625.00</td>
+                <td>$221,708.00</td>
+                <td>$66,083.00</td>
+                <td>$19,164.07</td>
+              </tr>
+              <tr>
+                <td>33%</td>
+                <td>$221,708.00</td>
+                <td>undefined</td>
+                <td>$1</td>
+                <td>$0.33</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <section class="provincial">
-          <h2>Provincial and territorial tax rates for 2022 - Ontario</h2>
-          s
-          <ul>
-            <li>
-              5.05% on the portion of your taxable income that is $46,226 or
-              less, plus,
-            </li>
-            <li>
-              9.15% on the portion of your taxable income that is more than
-              $46,226 but not more than $92,454, plus
-            </li>
-            <li>
-              11.16% on the portion of your taxable income that is more than
-              $92,454 but not more than $150,000, plus
-            </li>
-            <li>
-              12.16% on the portion of your taxable income that is more than
-              $150,000 but not more than $220,000, plus
-            </li>
-            <li>
-              13.16% on the portion of your taxable income that is more than
-              $220,000
-            </li>
-          </ul>
-        </section>
+          <!-- PROVISIONAL TAX CALCULATION -->
+          <h2>Provisional Tax Calculation Breakdown</h2>
+          <table class="content-table">
+            <thead>
+              <tr class="to-upper">
+                <th>Tax Rate</th>
+                <th>Lower Limit</th>
+                <th>Upper Limit</th>
+                <th>Taxable Income</th>
+                <th>Tax to Pay</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5.05%</td>
+                <td>0</td>
+                <td>$46,226.00</td>
+                <td>$46,226.00</td>
+                <td>$2,334.41</td>
+              </tr>
+              <tr>
+                <td>9.15%</td>
+                <td>$46,226.00</td>
+                <td>$92,454.00</td>
+                <td>$46,228.00</td>
+                <td>$4,229.86</td>
+              </tr>
+              <tr>
+                <td>11.16%</td>
+                <td>$92,454.00</td>
+                <td>$150,000.00</td>
+                <td>$57,546.00</td>
+                <td>$6,422.13</td>
+              </tr>
+              <tr>
+                <td>12.16%</td>
+                <td>$150,000.00</td>
+                <td>$220,000.00</td>
+                <td>$70,000.00</td>
+                <td>$8,512.00</td>
+              </tr>
+              <tr>
+                <td>13.16%</td>
+                <td>$220,000.00</td>
+                <td>undefined</td>
+                <td>$1,709.00</td>
+                <td>$224.90</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
+
+    <!-- NOTES FOR THE CALCULATIONS -->
+    <footer class="footer-notes">
+      <div>
+        <h2>Fedal tax rate for 2022</h2>
+        <ul>
+          <li>15% on the first $50,197 of taxable income, plus</li>
+          <li>
+            20.5% on the next $50,195 of taxable income (on the portion of
+            taxable income over 50,197 up to $100,392), plus
+          </li>
+          <li>
+            26% on the next $55,233 of taxable income (on the portion of taxable
+            income over $100,392 up to $155,625), plus
+          </li>
+          <li>
+            29% on the next $66,083 of taxable income (on the portion of taxable
+            income over 155,625 up to $221,708), plus
+          </li>
+          <li>33% of taxable income over $221,708</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Provincial and territorial tax rates for 2022 - Ontario</h2>
+        <ul>
+          <li>
+            5.05% on the portion of your taxable income that is $46,226 or less,
+            plus,
+          </li>
+          <li>
+            9.15% on the portion of your taxable income that is more than
+            $46,226 but not more than $92,454, plus
+          </li>
+          <li>
+            11.16% on the portion of your taxable income that is more than
+            $92,454 but not more than $150,000, plus
+          </li>
+          <li>
+            12.16% on the portion of your taxable income that is more than
+            $150,000 but not more than $220,000, plus
+          </li>
+          <li>
+            13.16% on the portion of your taxable income that is more than
+            $220,000
+          </li>
+        </ul>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
   margin: 0;
@@ -12,250 +12,84 @@ html {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
-  font-weight: 400;
-  height: 100vh;
+  font-family: 'Nunito', sans-serif;
   color: #333;
-  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
-  display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1.2rem;
+  /* height: 100vh; */
+  /* background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  display: flex; */
 }
 
-/* LAYOUT */
-main {
-  position: relative;
-  width: 150rem;
-  height: 80rem;
-  background-color: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(200px);
-  filter: blur();
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
-  overflow: hidden;
-  /* display: flex; */
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #333;
 }
 
 ul {
   font-size: 1.3rem;
-  font-weight: 500;
 }
 
-/* OPERATIONS */
-.operation {
-  border-radius: 1rem;
-  padding: 3rem 4rem;
-  color: #333;
+.content-table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  min-width: 400px;
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(200px);
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.operation--gross-income {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
-}
-
-.result {
-  border-radius: 1rem;
-  padding: 3rem 4rem;
-  color: #333;
-  /* font-size: 1.3rem; */
-}
-
-h2 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: #333;
-}
-h3 {
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.form {
-  display: grid;
-  grid-template-columns: 2.5fr 2.5fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 0.4rem 1rem;
-}
-
-/* Exceptions for interst */
-.form.form--gross-income {
-  grid-template-columns: 2.5fr 1fr 2.5fr;
-}
-.form__label--gross-income {
-  grid-row: 2;
-}
-/* End exceptions */
-
-.form__input {
-  width: 100%;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.4);
-  font-family: inherit;
-  font-size: 1.5rem;
-  text-align: center;
-  color: #333;
-  padding: 0.3rem 1rem;
-  border-radius: 0.7rem;
-  transition: all 0.3s;
-}
-
-.form__input:focus {
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.6);
-}
-
-.form__label {
-  font-size: 1.3rem;
-  text-align: center;
-}
-
-.form__btn {
-  border: none;
-  border-radius: 0.2rem;
-  font-size: 1.8rem;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.form__btn:focus {
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-/* 
-.player {
-  flex: 50%;
-  padding: 9rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.75s;
-} */
-
-/* ELEMENTS */
-/* .name {
-  position: relative;
-  font-size: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  word-spacing: 2px;
-  font-weight: 300;
-  margin-bottom: 1rem;
-}
-
-.score {
-  font-size: 8rem;
-  font-weight: 300;
-  color: #c7365f;
-  margin-bottom: auto;
-}
-
-.player--active {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.player--active .name {
-  font-weight: 700;
-}
-.player--active .score {
-  font-weight: 400;
-}
-
-.player--active .current {
-  opacity: 1;
-}
-
-.current {
-  background-color: #c7365f;
-  opacity: 0.8;
-  border-radius: 9px;
+.content-table thead tr {
+  background-color: #333;
   color: #fff;
-  width: 65%;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.75s;
+  text-align: left;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
-.current-label {
+.content-table thead tr.to-upper {
   text-transform: uppercase;
-  margin-bottom: 1rem;
-  font-size: 1.7rem;
-  color: #ddd;
+  font-weight: bold;
 }
 
-.current-score {
-  font-size: 3.5rem;
-} */
-
-/* ABSOLUTE POSITIONED ELEMENTS */
-/* .btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #444;
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: 400;
-  transition: all 0.2s;
-
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-
-  padding: 0.7rem 2.5rem;
-  border-radius: 50rem;
-  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
 }
 
-.btn::first-letter {
-  font-size: 2.4rem;
-  display: inline-block;
-  margin-right: 0.7rem;
+.content-table tbody tr {
+  border-bottom: 1px solid #333;
 }
 
-.btn--new {
-  top: 4rem;
-}
-.btn--roll {
-  top: 39.3rem;
-}
-.btn--hold {
-  top: 46.1rem;
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
 }
 
-.btn:active {
-  transform: translate(-50%, 3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #333;
 }
 
-.btn:focus {
-  outline: none;
+.content-table tbody tr.active-row {
+  color: rgba(0, 0, 0, 0.35);
+  font-weight: bold;
 }
 
-.dice {
-  position: absolute;
-  left: 50%;
-  top: 16.5rem;
-  transform: translateX(-50%);
-  height: 10rem;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+.footer-notes ul {
+  margin-bottom: 0;
+  font-size: 1rem;
 }
 
-.player--winner {
-  background-color: #2f2f2f;
-}
-
-.player--winner .name {
-  font-weight: 700;
-  color: #c7365f;
-} */
-
-.hidden {
-  display: none;
+.footer-notes h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }

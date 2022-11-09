@@ -2,12 +2,21 @@
 import * as config from './config.js';
 import * as model from './model.js';
 
+const form = document.querySelector('.form');
+const btnGrossIncome = document.querySelector('.form__btn--gross-income');
+const inputGrossIncome = document.querySelector('.form__input--gross-income');
+
 // const GROSS_SALARY = 50197; // First bracket
-const GROSS_SALARY = 98850; // second bracket
+// const GROSS_SALARY = 98850; // second bracket
 // const GROSS_SALARY = 120000; // second + third bracket
 // const GROSS_SALARY = 180000; // second + third + fourth bracket
 // const GROSS_SALARY = 221709; // second + third + fourth + fifth bracket
 
+/**
+ * Takes a Number and converts it into a String in International format
+ * @param {number} num
+ * @returns String in the INternation format of the country
+ */
 const formatNumberInternational = function (num) {
   const options = {
     style: 'currency',
@@ -51,14 +60,14 @@ const calcTax = function (grossSalary, taxArrayObj) {
 /**
  * TAKES IN THE VALUE FROM THE TOP LEVEL SHOWS THE USERS WHAT THEY CAN TAKE HOME.
  */
-const takeHomeIncome = function () {
+const takeHomeIncome = function (grossSalary) {
   console.log(
-    `Annual Gross Salary CAD${formatNumberInternational(GROSS_SALARY)}`
+    `Annual Gross Salary CAD${formatNumberInternational(grossSalary)}`
   );
 
   //  ======= FEDRAL TAX =======
   const { taxToPay: fedralTaxToPay, taxRateUsed: fedTaxRateUsed } = calcTax(
-    GROSS_SALARY,
+    grossSalary,
     config.FEDRAL_TAX
   );
   // console.log(
@@ -67,7 +76,7 @@ const takeHomeIncome = function () {
 
   // ======= PROVINCIAL TAX.  =======
   const { taxToPay: provTaxToPay, taxRateUsed: provTaxRateUsed } = calcTax(
-    GROSS_SALARY,
+    grossSalary,
     config.ONTARIO
   );
   // console.log(
@@ -78,8 +87,8 @@ const takeHomeIncome = function () {
   const taxSum =
     provTaxToPay.reduce((acc, tax) => acc + tax) +
     fedralTaxToPay.reduce((acc, tax) => acc + tax);
-  const takeHome = GROSS_SALARY - taxSum;
-  const avgTaxRate = (taxSum / GROSS_SALARY) * 100;
+  const takeHome = grossSalary - taxSum;
+  const avgTaxRate = (taxSum / grossSalary) * 100;
   const marginalTax =
     Math.max(...fedTaxRateUsed) + Math.max(...provTaxRateUsed);
 
@@ -94,4 +103,16 @@ const takeHomeIncome = function () {
   );
 };
 
-takeHomeIncome();
+// EVENT LISTENERS
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  console.log(+inputGrossIncome.value);
+  takeHomeIncome(+inputGrossIncome.value);
+});
+
+btnGrossIncome.addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log(+inputGrossIncome.value);
+  takeHomeIncome(+inputGrossIncome.value);
+});
