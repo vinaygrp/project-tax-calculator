@@ -1,0 +1,22 @@
+{
+  "name": "tax-calculator",
+  "version": "1.0.0",
+  "description": "It gives users the ability to calculate the tax on the gross income and let them know roughly how much they will have after each pay check/stub.",
+  "main": "controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinaygrp/project-tax-calculator.git"
+  },
+  "author": "Vinay Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinaygrp/project-tax-calculator/issues"
+  },
+  "homepage": "https://github.com/vinaygrp/project-tax-calculator#readme",
+  "dependencies": {
+    "fractional": "^1.0.0"
+  }
+}
