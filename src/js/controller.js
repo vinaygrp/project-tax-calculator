@@ -3,6 +3,8 @@ import * as model from './model.js';
 
 import calcTaxViews from './views/calcTaxView.js';
 import calcTaxSummaryViews from './views/calcTaxSummaryView.js';
+import federalSummaryView from './views/federalSummaryView.js';
+import provisionalSummaryView from './views/provisionalSummaryView.js';
 
 const controlTax = function () {
   // 1) Get salary
@@ -16,6 +18,9 @@ const controlTax = function () {
   model.calculateTax(salary);
 
   calcTaxSummaryViews.render(model.tax);
+
+  federalSummaryView.render(model.tax);
+  provisionalSummaryView.render(model.tax);
 };
 
 const init = function () {

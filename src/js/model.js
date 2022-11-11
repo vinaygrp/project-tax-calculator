@@ -11,8 +11,10 @@ import { formatNumberInternational } from './helper.js';
 export const tax = {
   fedTaxToPay: [],
   fedTaxRateUsed: [],
+  fedIncomeTaxable: [],
   provTaxToPay: [],
   provTaxRateUsed: [],
+  provIncomeTaxable: [],
   salary: 0,
   totalFedTax: 0,
   totalProvTax: 0,
@@ -32,6 +34,7 @@ const calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
   let taxableIncome = grossSalary;
   const taxToPay = [];
   const taxRateUsed = [];
+  const incomeTaxable = [];
 
   // TAKES THE ARRAY OBJECT OF THE PASSED OJECT AND FILTERS THEM BASED ON THE CONDITION.
   const limits = taxArrayObj.filter((limit) => grossSalary > limit.lower);
@@ -41,6 +44,7 @@ const calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
       grossSalary > arrObj.upper
         ? arrObj.upper - arrObj.lower
         : grossSalary - arrObj.lower;
+    incomeTaxable.push(taxableIncome);
     taxToPay.push(taxableIncome * (arrObj.taxRate / 100));
     taxRateUsed.push(arrObj.taxRate);
   });
@@ -50,15 +54,16 @@ const calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
   //   taxToPay.reduce((acc, tax) => acc + tax)
   // );
 
-  return { taxToPay, taxRateUsed };
+  return { incomeTaxable, taxToPay, taxRateUsed };
 };
 
 const _fedralTax = function (grossSalary) {
   //  ======= FEDRAL TAX =======
-  const { taxToPay, taxRateUsed } = calcTaxForFedAndProv(
+  const { incomeTaxable, taxToPay, taxRateUsed } = calcTaxForFedAndProv(
     grossSalary,
     config.FEDRAL_TAX
   );
+  tax.fedIncomeTaxable = [...incomeTaxable];
   tax.fedTaxToPay = [...taxToPay];
   tax.fedTaxRateUsed = [...taxRateUsed];
 
@@ -69,10 +74,11 @@ const _fedralTax = function (grossSalary) {
 
 const _provincialTax = function (grossSalary) {
   // ======= PROVINCIAL TAX.  =======
-  const { taxToPay, taxRateUsed } = calcTaxForFedAndProv(
+  const { incomeTaxable, taxToPay, taxRateUsed } = calcTaxForFedAndProv(
     grossSalary,
     config.ONTARIO
   );
+  tax.provIncomeTaxable = [...incomeTaxable];
   tax.provTaxToPay = [...taxToPay];
   tax.provTaxRateUsed = [...taxRateUsed];
   // console.log(
