@@ -2,7 +2,8 @@
   "name": "tax-calculator",
   "version": "1.0.0",
   "description": "It gives users the ability to calculate the tax on the gross income and let them know roughly how much they will have after each pay check/stub.",
-  "main": "controller.js",
+  "default": "src/index.html",
+  "source": "src/index.html",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist --no-scope-hoist"
