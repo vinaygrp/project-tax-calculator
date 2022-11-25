@@ -8,16 +8,16 @@ class CalcTaxSummaryView extends View {
     document.querySelector('.gross-salary').textContent =
       formatNumberInternational(this._data.salary);
 
-    console.log(`
-    <th>Fedral Tax: ${formatNumberInternational(this._data.totalFedTax)}</th>
-    <th>Provincial Tax: ${formatNumberInternational(
-      this._data.totalProvTax
-    )}</th>
-    <th>Tax to Pay: ${formatNumberInternational(this._data.taxToPay)}</th>
-    <th>Take Home Amount: ${formatNumberInternational(this._data.takeHome)}</th>
-    <th>Average Tax Rate: ${this._data.avgTaxRate.toFixed(2)}%</th>
-    <th>Marginal Tax Rate: ${this._data.marginalTax.toFixed(2)}%</th>    
-    `);
+    // console.log(`
+    // <th>Fedral Tax: ${formatNumberInternational(this._data.totalFedTax)}</th>
+    // <th>Provincial Tax: ${formatNumberInternational(
+    //   this._data.totalProvTax
+    // )}</th>
+    // <th>Tax to Pay: ${formatNumberInternational(this._data.taxToPay)}</th>
+    // <th>Take Home Amount: ${formatNumberInternational(this._data.takeHome)}</th>
+    // <th>Average Tax Rate: ${this._data.avgTaxRate.toFixed(2)}%</th>
+    // <th>Marginal Tax Rate: ${this._data.marginalTax.toFixed(2)}%</th>
+    // `);
 
     return `
           <tr>

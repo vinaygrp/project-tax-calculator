@@ -2,7 +2,7 @@ export default class View {
   _data;
 
   render(data, salary) {
-    console.log(data);
+    // console.log(data);
 
     this._data = data;
 

@@ -9,7 +9,7 @@ import provisionalSummaryView from './views/provisionalSummaryView.js';
 const controlTax = function () {
   // 1) Get salary
   const salary = calcTaxViews.getSalary();
-  console.log('controller - Salary:', salary);
+  // console.log('controller - Salary:', salary);
 
   if (!salary) return console.error('Empty Salary');
 

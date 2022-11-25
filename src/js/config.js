@@ -21,6 +21,25 @@ export const ONTARIO = [
   { lower: 150000, upper: 220000, taxRate: 12.16 },
   { lower: 220000, upper: undefined, taxRate: 13.16 },
 ];
+
+// For Year 2022: ONTARIO
+export const CPP = {
+  max_annual_pensionable_earning: 64900,
+  basic_exemption: 3500,
+  max_contributory_earning: 61400,
+  employee_employer_contribution_rate: 5.7,
+  max_annual_employee_and_employer_contribution: 3499.8,
+  max_annual_self_employed_contribution: 6999.6,
+};
+
+// For Year 2022: ONTARIO
+export const EI = {
+  max_annual_insurable_earnings: 60300,
+  rate: 1.58,
+  max_annual_employee_premium: 952.74,
+  max_annual_employer_premium: 1333.84,
+};
+
 /* 
 Provincial and territorial tax rates (combined chart)
 Provinces and territories 	Rates

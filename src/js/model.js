@@ -22,6 +22,24 @@ export const tax = {
   takeHome: 0,
   avgTaxRate: 0,
   marginalTax: 0,
+  cppMaxAnnEmpAndEmprContri: 0,
+};
+
+const _calculateCPP = function (grossSalary) {
+  // console.log(config.CPP.max_annual_pensionable_earning);
+  let baseAmount = grossSalary;
+  if (grossSalary > config.CPP.max_annual_pensionable_earning) {
+    baseAmount = config.CPP.max_annual_pensionable_earning;
+  }
+
+  const maxContributionEarning = baseAmount - config.CPP.basic_exemption;
+  const maxAnnualEmpAndEmprContri =
+    maxContributionEarning *
+    (config.CPP.employee_employer_contribution_rate / 100);
+  console.log(
+    'Max Annual Emp and Empr Contribution:',
+    maxAnnualEmpAndEmprContri
+  );
 };
 
 /**
@@ -30,7 +48,7 @@ export const tax = {
  * @param {Array Object} taxArrayObj
  * @returns {Object Array} taxToPay, taxRateUsed
  */
-const calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
+const _calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
   let taxableIncome = grossSalary;
   const taxToPay = [];
   const taxRateUsed = [];
@@ -38,7 +56,7 @@ const calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
 
   // TAKES THE ARRAY OBJECT OF THE PASSED OJECT AND FILTERS THEM BASED ON THE CONDITION.
   const limits = taxArrayObj.filter((limit) => grossSalary > limit.lower);
-  console.log('Limits:', limits);
+  // console.log('Limits:', limits);
   limits.forEach((arrObj) => {
     taxableIncome =
       grossSalary > arrObj.upper
@@ -59,7 +77,7 @@ const calcTaxForFedAndProv = function (grossSalary, taxArrayObj) {
 
 const _fedralTax = function (grossSalary) {
   //  ======= FEDRAL TAX =======
-  const { incomeTaxable, taxToPay, taxRateUsed } = calcTaxForFedAndProv(
+  const { incomeTaxable, taxToPay, taxRateUsed } = _calcTaxForFedAndProv(
     grossSalary,
     config.FEDRAL_TAX
   );
@@ -67,14 +85,14 @@ const _fedralTax = function (grossSalary) {
   tax.fedTaxToPay = [...taxToPay];
   tax.fedTaxRateUsed = [...taxRateUsed];
 
-  console.log(
-    `fedralTaxToPay: ${tax.fedTaxToPay}, fedTaxRateUsed: ${tax.fedTaxRateUsed}`
-  );
+  // console.log(
+  //   `fedralTaxToPay: ${tax.fedTaxToPay}, fedTaxRateUsed: ${tax.fedTaxRateUsed}`
+  // );
 };
 
 const _provincialTax = function (grossSalary) {
   // ======= PROVINCIAL TAX.  =======
-  const { incomeTaxable, taxToPay, taxRateUsed } = calcTaxForFedAndProv(
+  const { incomeTaxable, taxToPay, taxRateUsed } = _calcTaxForFedAndProv(
     grossSalary,
     config.ONTARIO
   );
@@ -101,6 +119,8 @@ export const calculateTax = function (grossSalary) {
 
   // const { taxToPay: provTaxToPay, taxRateUsed: provTaxRateUsed } =
   _provincialTax(grossSalary);
+
+  _calculateCPP(grossSalary);
 
   tax.totalFedTax = tax.provTaxToPay.reduce((acc, tax) => acc + tax);
   tax.totalProvTax = tax.fedTaxToPay.reduce((acc, tax) => acc + tax);
