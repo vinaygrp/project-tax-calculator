@@ -2,6 +2,7 @@ import View from './View.js';
 
 class CalcTaxView extends View {
   _parentElement = document.querySelector('.salary-form');
+  _errorMessage = 'Incorrect Input';
 
   getSalary() {
     const salary = this._parentElement.querySelector('.salary__field').value;

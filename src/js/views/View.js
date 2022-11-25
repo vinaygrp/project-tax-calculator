@@ -13,6 +13,21 @@ export default class View {
   }
 
   /**
+   * renderError: Rendering error on the UI
+   * @param {String} message if the message is undefined then Static message will take over.
+   */
+  renderError(message = this._errorMessage) {
+    const markup = `
+          <div class="error">
+            <p>${message}</p>
+          </div>
+    `;
+
+    // this._clear();
+    this._parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  /**
    * Documentation protected method _clear()
    * This clears the HTML elements in the sections.
    */

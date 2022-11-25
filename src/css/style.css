@@ -34,6 +34,15 @@ ul {
   font-size: 1.3rem;
 }
 
+.error {
+  font-weight: bold;
+  color: red;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .content-table {
   border-collapse: collapse;
   margin: 1rem 0;

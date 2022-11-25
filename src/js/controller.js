@@ -11,7 +11,15 @@ const controlTax = function () {
   const salary = calcTaxViews.getSalary();
   // console.log('controller - Salary:', salary);
 
-  if (!salary) return console.error('Empty Salary');
+  if (!salary) {
+    calcTaxViews.renderError('Empty Salary');
+    return console.error('Empty Salary');
+  }
+
+  if (salary < 0) {
+    calcTaxViews.renderError('Enter Positive Salary');
+    return console.error('Enter Positive Salary');
+  }
 
   // 2) Calculate the Tax in Model
   // const fedralTax =
