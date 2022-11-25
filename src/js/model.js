@@ -23,6 +23,7 @@ export const tax = {
   avgTaxRate: 0,
   marginalTax: 0,
   cppMaxAnnEmpAndEmprContri: 0,
+  eiMaxAnnEmpPrem: 0,
 };
 
 const _calculateCPP = function (grossSalary) {
@@ -33,12 +34,25 @@ const _calculateCPP = function (grossSalary) {
   }
 
   const maxContributionEarning = baseAmount - config.CPP.basic_exemption;
-  const maxAnnualEmpAndEmprContri =
+  tax.cppMaxAnnEmpAndEmprContri =
     maxContributionEarning *
     (config.CPP.employee_employer_contribution_rate / 100);
   console.log(
     'Max Annual Emp and Empr Contribution:',
-    maxAnnualEmpAndEmprContri
+    formatNumberInternational(tax.cppMaxAnnEmpAndEmprContri)
+  );
+};
+
+const _calculateEI = function (grossSalary) {
+  let baseAmount = grossSalary;
+  if (grossSalary > config.EI.max_annual_insurable_earnings) {
+    baseAmount = config.EI.max_annual_insurable_earnings;
+  }
+
+  tax.eiMaxAnnEmpPrem = baseAmount * (config.EI.rate / 100);
+  console.log(
+    'Max Annual Emp Premium:',
+    formatNumberInternational(tax.eiMaxAnnEmpPrem)
   );
 };
 
@@ -121,6 +135,7 @@ export const calculateTax = function (grossSalary) {
   _provincialTax(grossSalary);
 
   _calculateCPP(grossSalary);
+  _calculateEI(grossSalary);
 
   tax.totalFedTax = tax.provTaxToPay.reduce((acc, tax) => acc + tax);
   tax.totalProvTax = tax.fedTaxToPay.reduce((acc, tax) => acc + tax);

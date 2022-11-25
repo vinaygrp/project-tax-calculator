@@ -27,6 +27,10 @@ class CalcTaxSummaryView extends View {
             <td>${formatNumberInternational(this._data.takeHome)}</td>
             <td>${this._data.avgTaxRate.toFixed(2)}%</td>
             <td>${this._data.marginalTax.toFixed(2)}%</td>
+            <td>${formatNumberInternational(
+              this._data.cppMaxAnnEmpAndEmprContri
+            )}</td>
+            <td>${formatNumberInternational(this._data.eiMaxAnnEmpPrem)}</td>
           </tr>
     `;
   }
