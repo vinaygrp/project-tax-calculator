@@ -4,7 +4,8 @@
   "description": "It gives users the ability to calculate the tax on the gross income and let them know roughly how much they will have after each pay check/stub.",
   "main": "controller.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist --no-scope-hoist"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/vinaygrp/project-tax-calculator#readme",
   "dependencies": {
     "fractional": "^1.0.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.0"
   }
 }

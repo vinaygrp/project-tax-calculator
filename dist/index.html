@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/index.c92073ef.css">
+    <title>Tax Calculator</title>
+    <script defer="" src="/index.e37f48ea.js"></script>
+  </head>
+  <body>
+    <!-- INPUT FIELD -->
+    <div class="container">
+      <header class="header">
+        <h2>Gross Salary</h2>
+        <form class="salary-form">
+          <input type="number" class="salary__field" value="221708" placeholder="Enter your gross annual income">
+          <button class="btn calculate__btn">
+            <span>Search</span>
+          </button>
+          <!-- <label class="form__label form__label--gross-income">Amount</label> -->
+        </form>
+      </header>
+    </div>
+
+    <!-- CALCULATED TAX RESULT SUMMARY -->
+    <h2 class="jump">
+      Below is how your Take home and tax looks like for tax year 2022:
+    </h2>
+    <div class="calculated-tax-result">
+      <h3>
+        Annual Gross Salary: <span class="gross-salary">$221,708.00</span>
+      </h3>
+      <table class="content-table">
+        <thead>
+          <tr class="to-upper">
+            <th>Fedral Tax</th>
+            <th>Provincial Tax</th>
+            <th>Tax to Pay</th>
+            <th>Take Home Amount</th>
+            <th>Average Tax Rate</th>
+            <th>Marginal Tax Rate</th>
+            <th>Max Annual CPP</th>
+            <th>Max Annual EI premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tax-takehome-results">
+            <td>Will See here</td>
+            <td>Will See here</td>
+            <td>Will See here</td>
+            <td>Will See here</td>
+            <td>Will See here</td>
+            <td>Will See here</td>
+            <td>Will See here</td>
+            <td>Will See here</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="results-cpp">
+      <h2>CPP Breakdown 2022</h2>
+      <table class="content-table">
+        <thead>
+          <tr class="to-upper">
+            <th>Maximum Annual Pensionable Earnings</th>
+            <th>Basic Exemption Amount</th>
+            <th>Maximum contributory earnings</th>
+            <th>Employee and employer contribution rate (%)</th>
+            <th>Maximum anual employee and employer contribution</th>
+            <th>Maximum annual self-employed contribution</th>
+          </tr>
+        </thead>
+        <tbody class="cpp-breakdown">
+          <tr>
+            <td>$64,900.00</td>
+            <td>$3,500.00</td>
+            <td>$61,400.00</td>
+            <td>5.70%</td>
+            <td>$3,499.80</td>
+            <td>$6,999.60</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="results-ei">
+      <h2>EI Breakdown 2022</h2>
+      <table class="content-table">
+        <thead>
+          <tr class="to-upper">
+            <th>Maximum annual insurable earnings</th>
+            <th>Rate (%)</th>
+            <th>Maximum annual employee premium</th>
+            <th>Maximum annual employer premium</th>
+          </tr>
+        </thead>
+        <tbody class="cpp-breakdown">
+          <tr>
+            <td>$60,300.00</td>
+            <td>1.58%</td>
+            <td>$952.74</td>
+            <td>$1,333.84</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CALCULATED TAX RESULS BREAKDOWN -->
+    <h1>Result Breakdown</h1>
+    <!-- FEBDRAL TAX CALCULATION -->
+    <div class="results-breakdown-federal">
+      <h2>Fedral Tax Calculation Breakdown</h2>
+      <table class="content-table">
+        <thead>
+          <tr class="to-upper">
+            <th>Tax Rate</th>
+            <th>Lower Limit</th>
+            <th>Upper Limit</th>
+            <th>Taxable Income</th>
+            <th>Tax to Pay</th>
+          </tr>
+        </thead>
+        <tbody class="federal-breakdown">
+          <tr>
+            <td>15%</td>
+            <td>0</td>
+            <td>$50,197.00</td>
+            <td>$50,197.00</td>
+            <td>$7,529.55</td>
+          </tr>
+          <tr>
+            <td>20.50%</td>
+            <td>$50,197.00</td>
+            <td>$100,392.00</td>
+            <td>$50,195.00</td>
+            <td>$10,289.98</td>
+          </tr>
+          <tr>
+            <td>26.00%</td>
+            <td>$100,392.00</td>
+            <td>$155,625.00</td>
+            <td>$55,233.00</td>
+            <td>$14,360.58</td>
+          </tr>
+          <tr>
+            <td>29.00%</td>
+            <td>$155,625.00</td>
+            <td>$221,708.00</td>
+            <td>$66,083.00</td>
+            <td>$19,164.07</td>
+          </tr>
+          <tr>
+            <td>33%</td>
+            <td>$221,708.00</td>
+            <td>undefined</td>
+            <td>$1</td>
+            <td>$0.33</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PROVISIONAL TAX CALCULATION -->
+    <h2>Provisional Tax Calculation Breakdown</h2>
+    <div class="results-breakdown-provisional">
+      <table class="content-table">
+        <thead>
+          <tr class="to-upper">
+            <th>Tax Rate</th>
+            <th>Lower Limit</th>
+            <th>Upper Limit</th>
+            <th>Taxable Income</th>
+            <th>Tax to Pay</th>
+          </tr>
+        </thead>
+        <tbody class="provisional-breakdown">
+          <tr>
+            <td>5.05%</td>
+            <td>0</td>
+            <td>$46,226.00</td>
+            <td>$46,226.00</td>
+            <td>$2,334.41</td>
+          </tr>
+          <tr>
+            <td>9.15%</td>
+            <td>$46,226.00</td>
+            <td>$92,454.00</td>
+            <td>$46,228.00</td>
+            <td>$4,229.86</td>
+          </tr>
+          <tr>
+            <td>11.16%</td>
+            <td>$92,454.00</td>
+            <td>$150,000.00</td>
+            <td>$57,546.00</td>
+            <td>$6,422.13</td>
+          </tr>
+          <tr>
+            <td>12.16%</td>
+            <td>$150,000.00</td>
+            <td>$220,000.00</td>
+            <td>$70,000.00</td>
+            <td>$8,512.00</td>
+          </tr>
+          <tr>
+            <td>13.16%</td>
+            <td>$220,000.00</td>
+            <td>undefined</td>
+            <td>$1,709.00</td>
+            <td>$224.90</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- NOTES FOR THE CALCULATIONS -->
+    <footer class="footer-notes">
+      <div>
+        <h2>Fedal tax rate for 2022</h2>
+        <ul>
+          <li>15% on the first $50,197 of taxable income, plus</li>
+          <li>
+            20.5% on the next $50,195 of taxable income (on the portion of
+            taxable income over 50,197 up to $100,392), plus
+          </li>
+          <li>
+            26% on the next $55,233 of taxable income (on the portion of taxable
+            income over $100,392 up to $155,625), plus
+          </li>
+          <li>
+            29% on the next $66,083 of taxable income (on the portion of taxable
+            income over 155,625 up to $221,708), plus
+          </li>
+          <li>33% of taxable income over $221,708</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Provincial and territorial tax rates for 2022 - Ontario</h2>
+        <ul>
+          <li>
+            5.05% on the portion of your taxable income that is $46,226 or less,
+            plus,
+          </li>
+          <li>
+            9.15% on the portion of your taxable income that is more than
+            $46,226 but not more than $92,454, plus
+          </li>
+          <li>
+            11.16% on the portion of your taxable income that is more than
+            $92,454 but not more than $150,000, plus
+          </li>
+          <li>
+            12.16% on the portion of your taxable income that is more than
+            $150,000 but not more than $220,000, plus
+          </li>
+          <li>
+            13.16% on the portion of your taxable income that is more than
+            $220,000
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
