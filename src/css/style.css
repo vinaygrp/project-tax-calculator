@@ -34,6 +34,34 @@ ul {
   font-size: 1.3rem;
 }
 
+.panel_view {
+  display: flex;
+  flex-grow: 1;
+  padding: 1em max(1em, calc(50vw - 35ch));
+  place-items: center;
+}
+
+.panel_view > * {
+  flex-grow: 1;
+}
+
+.bg-1 {
+  background-image: radial-gradient(
+    circle farthest-corner at 1.5% 1.4%,
+    rgba(159, 227, 255, 1) 0%,
+    rgba(255, 177, 219, 1) 100.2%
+  );
+}
+
+.panel__header,
+.panel__content {
+  padding: var(--panel-padding);
+}
+
+.panel__title {
+  line-height: 1;
+}
+
 .error {
   font-weight: bold;
   color: red;
