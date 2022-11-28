@@ -140,7 +140,11 @@ export const calculateTax = function (grossSalary) {
   tax.totalFedTax = tax.provTaxToPay.reduce((acc, tax) => acc + tax);
   tax.totalProvTax = tax.fedTaxToPay.reduce((acc, tax) => acc + tax);
   tax.taxToPay = tax.totalFedTax + tax.totalProvTax;
-  tax.takeHome = grossSalary - tax.taxToPay;
+  tax.takeHome =
+    grossSalary -
+    tax.taxToPay -
+    tax.cppMaxAnnEmpAndEmprContri -
+    tax.eiMaxAnnEmpPrem;
   tax.avgTaxRate = (tax.taxToPay / grossSalary) * 100;
   tax.marginalTax =
     Math.max(...tax.fedTaxRateUsed) + Math.max(...tax.provTaxRateUsed);
